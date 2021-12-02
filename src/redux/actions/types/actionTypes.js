@@ -1,0 +1,10 @@
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAIL = "LOGIN_FAIL";
+
+export const VERIFY_TOKEN = "VERIFY_TOKEN";
+export const VERIFY_TOKEN_ERROR = "VERIFY_TOKEN_ERROR";
+
+export const LOGOUT = "LOGOUT";
+
+export const CREATE_PRODUCT = "CREATE_PRODUCT";
+export const CREATE_PRODUCT_ERROR = "CREATE_PRODUCT_ERROR";
