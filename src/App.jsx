@@ -3,6 +3,7 @@ import { verifyToken, logout } from "./redux/actions/authAction";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store";
+import Loader from "./components/common/Loader";
 
 const Landing = lazy(() => import("./components/Landing"));
 
@@ -20,7 +21,7 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
-        <Suspense fallback={<div> loading...</div>}>
+        <Suspense fallback={<Loader />}>
           <Switch>
             <Route exact path="/" component={Landing} />
           </Switch>
