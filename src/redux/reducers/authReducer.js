@@ -32,17 +32,20 @@ export function authReducer(state = initialState, action) {
       localStorage.setItem("user", payload.user);
       return {
         ...state,
+        token: payload.token,
         isAuthenticated: true,
+        user: payload.user,
         isDistributor: payload.isDistributor,
         loading: false,
       };
 
     case VERIFY_TOKEN:
-      const _user = JSON.parse(localStorage.getItem("user"));
       return {
         ...state,
-        isDistributor: _user.isDistributor,
-        user: _user,
+        isAuthenticated: true,
+        isDistributor: payload.isDistributor,
+        role: payload.user.role,
+        user: payload.user,
       };
 
     case VERIFY_TOKEN_ERROR:
@@ -53,6 +56,7 @@ export function authReducer(state = initialState, action) {
       return {
         ...state,
         isAuthenticated: false,
+        token: null,
         isDistributor: null,
         loading: false,
         user: null,

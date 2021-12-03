@@ -1,12 +1,20 @@
-import { LOGIN_FAIL, LOGIN_SUCCESS } from "./types/actionTypes";
+import {
+  LOGIN_FAIL,
+  LOGIN_SUCCESS,
+  VERIFY_TOKEN,
+  VERIFY_TOKEN_ERROR,
+  LOGOUT,
+  USER_LOADED,
+  AUTH_ERROR,
+} from "./types/actionTypes";
 import axios from "axios";
 import { apiEndpoint } from "../../utils/apiEndpoint";
 
 export const login =
-  ({ email, password }) =>
+  ({ email, password, type }) =>
   async (dispatch) => {
     try {
-      const body = JSON.stringify({ email, password });
+      const body = JSON.stringify({ email, password, type });
       const res = await axios({
         url: `${apiEndpoint}/api/auth`,
         method: "POST",
@@ -29,6 +37,8 @@ export const verifyToken = (token) => async (dispatch) => {
       method: "GET",
       url: `${apiEndpoint}/api/auth/verify?token=${token}`,
     });
+
+    console.log(res.data);
     dispatch({ type: VERIFY_TOKEN, payload: res.data });
   } catch (err) {
     dispatch({ type: VERIFY_TOKEN_ERROR });
@@ -39,3 +49,21 @@ export const verifyToken = (token) => async (dispatch) => {
 export const logout = () => async (dispatch) => {
   dispatch({ type: LOGOUT });
 };
+
+export const loadUser =
+  ({ type, token }) =>
+  async (dispatch) => {
+    try {
+      const res = await axios.get(
+        `${apiEndpoint}/api/auth?type=${type}&token=${token}`
+      );
+      dispatch({
+        type: USER_LOADED,
+        payload: res.data,
+      });
+    } catch (err) {
+      dispatch({
+        type: AUTH_ERROR,
+      });
+    }
+  };
