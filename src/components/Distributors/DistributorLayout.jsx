@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useResizeDetector } from "react-resize-detector";
 import { Redirect, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
-import Navbar from "../common/Navbar";
+import DistributorNavbar from "../common/DistributorNavbar";
 
 function DistributorLayout({ isAuthenticated, children }) {
   const [isSidebarActive, setIsActive] = useState(false);
@@ -89,7 +89,7 @@ function DistributorLayout({ isAuthenticated, children }) {
         <div>test</div>
       </div>
       <div className={`${mainbar} ${showMainbar}`}>
-        <Navbar
+        <DistributorNavbar
           handleSidebar={handleSidebar}
           handleMenu={handleMenu}
           ref={myRef}
