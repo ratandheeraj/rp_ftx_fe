@@ -1,7 +1,7 @@
-import { FETCH_ORDER, FETCH_ORDER_ERROR } from "./types/actionTypes";
+import { FETCH_ORDER, FETCH_ORDER_ERROR } from "../actions/types/actionTypes";
 
 const initialState = {
-  key: null,
+  apiKey: null,
   amount: null,
   order_id: null,
   retailer_name: null,
@@ -16,7 +16,7 @@ export function razorpayReducer(state = initialState, action) {
     case FETCH_ORDER:
       return {
         ...state,
-        key: payload.key,
+        apiKey: payload.apiKey,
         amount: payload.amount,
         order_id: payload.order_id,
         retailer_name: payload.retailer_name,
@@ -27,7 +27,7 @@ export function razorpayReducer(state = initialState, action) {
     case FETCH_ORDER_ERROR:
       return {
         ...state,
-        key: null,
+        apiKey: null,
         amount: null,
         order_id: null,
         retailer_name: null,

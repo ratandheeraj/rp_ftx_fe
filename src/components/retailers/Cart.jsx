@@ -1,45 +1,64 @@
-import React from "react";
+import React,{ useEffect } from "react";
 import CartItem from "./CartItem";
 import styles from "../../styles/cartItem.module.css";
+import { connect } from "react-redux";
+import { createRazorpayOrder } from "../../redux/actions/razorpayAction";
 
-function loadRazorpay(){
+function loadRazorpay(src){
     return new Promise((resolve)=>{
         const script = document.createElement('script');
-        script.src = "https://checkout.razorpay.com/v1/checkout.js";
-        document.appendChild(script);
+        script.src = src;
         script.onload= ()=>{
             resolve(true);
         }
         script.onerror = ()=>{
             resolve(false)
         }
+        document.body.appendChild(script);
     })
-    
 }
 
-function Cart(){
+function Cart({
+    apiKey,
+    amount,
+    order_id,
+    retailer_name,
+    retailer_email,
+    distributor_name,
+    createRazorpayOrder
+    }){
+
+        const reqObject = {
+            amount:"50000",
+            distributor_id:"d2c0ea6f-183c-4973-b3db-0602d360d8c2",
+            retailer_id:"d2c0ea6f-183c-4973-b3db-0602d360d8c2"
+        }
+    useEffect(() => {
+        createRazorpayOrder(reqObject);
+      }, []);
+      console.log(order_id);
     async function displayRazorpay(){
-        const res = await loadRazorpay();
+        const res = await loadRazorpay("https://checkout.razorpay.com/v1/checkout.js");
         if(!res){
             alert("Razorpay Failed to load");
             return;
         }
-        var options = {
-            "key": "YOUR_KEY_ID", // Enter the Key ID generated from the Dashboard
-            "amount": "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        let options = {
+            "key": apiKey,
+            "amount": amount, 
             "currency": "INR",
-            "name": "Acme Corp",
+            "name": distributor_name,
             "description": "Test Transaction",
             "image": "https://example.com/your_logo",
-            "order_id": "order_DBJOWzybf0sJbb", //This is a sample Order ID. Pass the `id` obtained in the previous step
+            "order_id": order_id,
             "handler": function (response){
                 alert(response.razorpay_payment_id);
                 alert(response.razorpay_order_id);
                 alert(response.razorpay_signature)
             },
             "prefill": {
-                "name": "Gaurav Kumar",
-                "email": "gaurav.kumar@example.com",
+                "name": retailer_name,
+                "email": retailer_email,
                 "contact": "9999999999"
             },
             "notes": {
@@ -49,7 +68,8 @@ function Cart(){
                 "color": "#3399cc"
             }
         };
-        var rzp1 = new Razorpay(options);
+        let paymentObject = new Razorpay(options);
+        paymentObject.open();
         rzp1.on('payment.failed', function (response){
                 alert(response.error.code);
                 alert(response.error.description);
@@ -69,7 +89,7 @@ function Cart(){
         <CartItem />
         <CartItem />
         <div className={styles["buttonCenter"]}>
-          <button className="btn btn-wide btn-lg justify-self-center">
+          <button className="btn btn-wide btn-lg justify-self-center" onClick={displayRazorpay}>
             Checkout
           </button>
         </div>
@@ -78,4 +98,13 @@ function Cart(){
   );
 }
 
-export default Cart;
+const mapStateToProps = (state) => ({
+    apiKey: state.razorpayReducer.apiKey,
+    amount: state.razorpayReducer.amount,
+    order_id: state.razorpayReducer.order_id,
+    retailer_name: state.razorpayReducer.retailer_name,
+    retailer_email: state.razorpayReducer.retailer_email,
+    distributor_name: state.razorpayReducer.distributor_name,
+  });
+  
+export default connect(mapStateToProps, { createRazorpayOrder })(Cart);
