@@ -16,6 +16,7 @@ import decoder from "jwt-decode";
 import ProductForm from "./components/Products/ProductForm";
 import ProductDetailView from "./components/retailers/ProductDetailView";
 import Cart from "./components/retailers/Cart";
+import Sales from "./components/Distributors/Sales";
 
 const Login = lazy(() => import("./components/Login"));
 const Landing = lazy(() => import("./components/Landing"));
@@ -51,6 +52,7 @@ function App({ isAuthenticated, user }) {
             <DistributorLayout>
               <Route exact path="/products" component={Products} />
               <Route exact path="/product-form" component={ProductForm} />
+              <Route exact path="/sales" component={Sales} />
             </DistributorLayout>
           </Switch>
           <Switch>
