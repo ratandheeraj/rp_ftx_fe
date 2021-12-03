@@ -39,7 +39,7 @@ export const verifyToken = (token) => async (dispatch) => {
     });
 
     console.log(res.data);
-    dispatch({ type: VERIFY_TOKEN, payload: res.data });
+    dispatch({ type: VERIFY_TOKEN, payload: res.data.payload });
   } catch (err) {
     dispatch({ type: VERIFY_TOKEN_ERROR });
     dispatch({ type: LOGIN_FAIL });

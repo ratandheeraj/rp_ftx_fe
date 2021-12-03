@@ -1,7 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { Link, Redirect } from "react-router-dom";
 
-function Landing() {
+function Landing({ isAuthenticated }) {
+  if (isAuthenticated) {
+    return <Redirect to="/login" />;
+  }
+
   return (
     <div>
       <h1>This is landing page</h1>
@@ -12,4 +17,8 @@ function Landing() {
   );
 }
 
-export default Landing;
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.authReducer.isAuthenticated,
+});
+
+export default connect(mapStateToProps, {})(Landing);

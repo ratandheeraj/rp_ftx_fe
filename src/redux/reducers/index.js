@@ -1,8 +1,11 @@
 import { combineReducers } from "redux";
 import { authReducer } from "./authReducer";
-import { razorpayReducer } from "./razorpayReducer";
+import { distReducer } from "./distributorReducer";
+import { productReducer } from "./productReducer";
 
 export default combineReducers({
   authReducer,
+  distReducer,
+  productReducer,
   razorpayReducer,
 });

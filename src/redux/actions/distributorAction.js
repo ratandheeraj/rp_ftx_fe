@@ -5,7 +5,7 @@ import {
 } from "./types/actionTypes";
 import { apiEndpoint } from "../../utils/apiEndpoint";
 
-export const fetchAllDistributos = () => async (dispatch) => {
+export const fetchAllDistributors = () => async (dispatch) => {
   try {
     const res = await axios.get(`${apiEndpoint}/api/distributors`);
     dispatch({ type: FETCH_ALL_DISTRIBUTORS, payload: res.data });

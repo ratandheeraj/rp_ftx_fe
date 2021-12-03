@@ -24,14 +24,9 @@ function Login({ isAuthenticated, user, login }) {
 
   if (isAuthenticated) {
     if (user) {
-      console.log(user);
       if (user.role === "distributor") {
         return <Redirect to="/distributor" />;
-      } else if (user.role === "retailer") {
-        return <Redirect to="/retailer" />;
-      } else {
-        return <Redirect to="/login" />;
-      }
+      } else return <Redirect to="/retailer" />;
     }
   }
 
