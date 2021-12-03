@@ -9,6 +9,8 @@ import Loader from "./components/common/Loader";
 import Navbar from "./components/common/Navbar";
 import RetailerHome from "./components/retailers/RetailerHome";
 import ProductPage from "./components/retailers/ProductPage";
+import ProductDetailView from "./components/retailers/ProductDetailView";
+import Cart from "./components/retailers/Cart";
 
 const Login = lazy(() => import("./components/Login"));
 const Landing = lazy(() => import("./components/Landing"));
@@ -38,6 +40,8 @@ function App() {
             <Route exact path="/login" component={Login} />
             <Route exact path="/retailer-home" component={RetailerHome} />
             <Route exact path="/product-page" component={ProductPage} />
+            <Route exact path="/detail-view" component={ProductDetailView} />
+            <Route exact path="/cart" component={Cart} />
           </Switch>
         </Suspense>
       </Router>

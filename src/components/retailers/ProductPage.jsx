@@ -5,7 +5,6 @@ import ProductCard from "./ProductCard";
 function ProductPage(){
     return(
         <div>
-            <Navbar/>
             <ProductCard />
             <ProductCard />
             <ProductCard />
