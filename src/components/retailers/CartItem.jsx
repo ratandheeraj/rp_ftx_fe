@@ -1,39 +1,70 @@
 import React from "react";
 // import {AiOutlinePlus} from 'react-icons/fa';
-import styles from '../../styles/cartItem.module.css';
+import styles from "../../styles/cartItem.module.css";
+import { GiMedicines as Meds } from "react-icons/gi";
 
-function CartItem(){
-    return(
+function CartItem({
+  product_id,
+  product_name,
+  product_price,
+  quantity,
+  handleDecrement,
+  handleIncrement,
+}) {
+  return (
+    <div className="card lg:card-side bordered shadow-md py-1">
+      <figure className="self-center">
+        <Meds size={96} />
+      </figure>
+      <div className="card-body">
+        <h2 className="card-title">Product Name: {product_name}</h2>
         <div>
-            <div class="card lg:card-side bordered shadow-md py-1">
-                <figure>
-                    <img src="https://picsum.photos/id/1005/400/250" />
-                </figure> 
-                <div class="card-body">
-                    <h2 class="card-title">Product Name</h2> 
-                    <p>Price:<div class="badge badge-info badge-md">Rs. 5000</div></p> 
-                    <p className="mt-2">No of Items:<div class="badge badge-warning badge-md">2</div>
-                    <button class="btn btn-outline btn-square btn-xs">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-plus" viewBox="4 4 8 8">
-  <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-</svg>
-                    </button> 
-                    </p>
-                    <div class="card-actions">
-                    {/* <button class="btn btn-primary">Direct Buy</button>  */}
-                    {/* <button class="btn btn-ghost">Delete</button> */}
-                   <div className={styles['closeButton']}>
-                   <button class="btn btn-square btn-ghost">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current text-error">   
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>                       
-                        </svg>
-                        </button>
-                   </div>
-                    </div>
-                </div>
-            </div> 
+          Price:
+          <div className="badge badge-info mx-2 badge-md">
+            Rs. {product_price}
+          </div>
         </div>
-    );
+        <div className="mt-2">
+          No of Items:
+          <div className="badge mx-2 badge-warning badge-md">{quantity}</div>
+        </div>
+        <div>
+          <button
+            disabled={quantity < 1}
+            className="btn mx-1 btn-primary btn-sm"
+            onClick={() => handleDecrement(product_id)}
+          >
+            -
+          </button>
+          <button
+            className="btn mx-1 btn-primary btn-sm"
+            onClick={() => handleIncrement(product_id)}
+          >
+            +
+          </button>
+        </div>
+        <div className="card-actions">
+          <div className={styles["closeButton"]}>
+            <button className="btn btn-square btn-ghost">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                className="inline-block w-6 h-6 stroke-current text-error"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M6 18L18 6M6 6l12 12"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default CartItem;

@@ -1,18 +1,16 @@
 import React from "react";
+import { GiMedicines as Meds } from "react-icons/gi";
 
-function ProductCard() {
+function ProductCard({ product_name }) {
   return (
     <div style={{ display: "inline-block" }}>
       <div className="card row-span-3 shadow-lg compact bg-base-100 px-3 py-1 w-80 m-0">
         <figure>
-          <img src="https://picsum.photos/id/1005/600/400" />
+          <Meds size={22} />
         </figure>
         <div className="flex-row items-center space-x-4 card-body">
           <div>
-            <h2 className="card-title">Karolann Collins</h2>
-            <p className="text-base-content text-opacity-40">
-              Direct Interactions Liaison
-            </p>
+            <h2 className="card-title">{product_name}</h2>
           </div>
         </div>
         <button className="btn btn-block">Add to cart</button>

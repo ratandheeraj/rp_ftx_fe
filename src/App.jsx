@@ -17,6 +17,7 @@ import ProductForm from "./components/Products/ProductForm";
 import ProductDetailView from "./components/retailers/ProductDetailView";
 import Cart from "./components/retailers/Cart";
 import Sales from "./components/Distributors/Sales";
+import DistProducts from "./components/retailers/DistProducts";
 
 const Login = lazy(() => import("./components/Login"));
 const Landing = lazy(() => import("./components/Landing"));
@@ -50,8 +51,19 @@ function App() {
           <Switch>
             <Route path="/retailer">
               <RetailerLayout>
-                <Route exact path="/retailer-home" component={RetailerHome} />
-                <Route exact path="/product-page" component={ProductPage} />
+                <Route
+                  exact
+                  path="/retailer/retailer-home"
+                  component={RetailerHome}
+                />
+                <Route
+                  exact
+                  path="/retailer/product-page"
+                  component={ProductPage}
+                />
+                <Route path="/retailer/products">
+                  <DistProducts />
+                </Route>
               </RetailerLayout>
             </Route>
           </Switch>
