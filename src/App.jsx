@@ -14,6 +14,8 @@ import Products from "./components/Products/Products";
 import RetailerLayout from "./components/retailers/RetailerLayout";
 import decoder from "jwt-decode";
 import ProductForm from "./components/Products/ProductForm";
+import ProductDetailView from "./components/retailers/ProductDetailView";
+import Cart from "./components/retailers/Cart";
 
 const Login = lazy(() => import("./components/Login"));
 const Landing = lazy(() => import("./components/Landing"));
