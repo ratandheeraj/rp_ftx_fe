@@ -23,11 +23,11 @@ function CartItem(){
                     {/* <button class="btn btn-primary">Direct Buy</button>  */}
                     {/* <button class="btn btn-ghost">Delete</button> */}
                    <div className={styles['closeButton']}>
-                    <button class="btn btn-square btn-xs md:btn-sm">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-4 h-4 stroke-current md:w-6 md:h-6">   
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>                       
-                            </svg>
-                        </button> 
+                   <button class="btn btn-square btn-ghost">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current text-error">   
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>                       
+                        </svg>
+                        </button>
                    </div>
                     </div>
                 </div>
