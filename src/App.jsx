@@ -24,6 +24,7 @@ function App({ isAuthenticated, user }) {
   useEffect(() => {
     if (localStorage.token) {
       const token = localStorage.getItem("token");
+      console.log(token);
       store.dispatch(verifyToken(token));
       console.log("ran in app.js");
     }
@@ -44,20 +45,26 @@ function App({ isAuthenticated, user }) {
           <Switch>
             <Route exact path="/" component={Landing} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/retailer" component={RetailerLayout} />
-            <Route exact path="/distributor" component={DistributorLayout} />
           </Switch>
           <Switch>
-            <DistributorLayout>
-              <Route exact path="/products" component={Products} />
-              <Route exact path="/product-form" component={ProductForm} />
-            </DistributorLayout>
+            <Route path="/retailer">
+              <RetailerLayout>
+                <Route exact path="/retailer-home" component={RetailerHome} />
+                <Route exact path="/product-page" component={ProductPage} />
+              </RetailerLayout>
+            </Route>
           </Switch>
           <Switch>
-            <RetailerLayout>
-              <Route exact path="/retailer-home" component={RetailerHome} />
-              <Route exact path="/product-page" component={ProductPage} />
-            </RetailerLayout>
+            <Route path="/distributor">
+              <DistributorLayout>
+                <Route path="/distributor/products">
+                  <Products />
+                </Route>
+                <Route path="/distributor/product-form">
+                  <ProductForm />
+                </Route>
+              </DistributorLayout>
+            </Route>
           </Switch>
         </Suspense>
       </Router>

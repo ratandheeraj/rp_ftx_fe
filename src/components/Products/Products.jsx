@@ -8,7 +8,7 @@ export const Products = ({ isAuthenticated, isDistributor }) => {
   return (
     <div>
       <div className="container">
-        <Link className="btn btn-primary" to="/product-form">
+        <Link className="btn btn-primary" to="/distributor/product-form">
           Create a Product
         </Link>
       </div>

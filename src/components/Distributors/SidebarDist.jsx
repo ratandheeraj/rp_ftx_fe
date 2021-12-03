@@ -11,7 +11,7 @@ function SidebarDist() {
           <span>Menu</span>
         </li>
         <li>
-          <NavLink to="/dashoard">
+          <NavLink to="/distributor/dashoard">
             <div className="flex items-center">
               <Dashboard size={18} cursor="dashboard" />
               <p className="mx-2">Dashboard</p>
@@ -19,16 +19,16 @@ function SidebarDist() {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/products">
-            <div className="flex items-center">
+          <NavLink to="/distributor/products">
+            <div className="flex items-center ">
               <Products size={18} cursor="product" />
               <p className="mx-2">Products</p>
             </div>
           </NavLink>
         </li>
         <li>
-          <NavLink to="/sales">
-            <div className="flex items-center">
+          <NavLink to="/distributor/sales">
+            <div className="flex items-center ">
               <Sales size={18} cursor="sales" />
               <p className="mx-2">Sales</p>
             </div>

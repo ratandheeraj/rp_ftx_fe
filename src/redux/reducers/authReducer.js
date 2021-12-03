@@ -29,7 +29,6 @@ export function authReducer(state = initialState, action) {
   switch (type) {
     case LOGIN_SUCCESS:
       localStorage.setItem("token", payload.token);
-      localStorage.setItem("user", payload.user);
       return {
         ...state,
         token: payload.token,
@@ -43,8 +42,8 @@ export function authReducer(state = initialState, action) {
       return {
         ...state,
         isAuthenticated: true,
+        role: payload.role,
         isDistributor: payload.isDistributor,
-        role: payload.user.role,
         user: payload.user,
       };
 
@@ -52,7 +51,6 @@ export function authReducer(state = initialState, action) {
     case LOGIN_FAIL:
     case LOGOUT:
       localStorage.removeItem("token");
-      localStorage.removeItem("user");
       return {
         ...state,
         isAuthenticated: false,
