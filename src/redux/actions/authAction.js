@@ -27,7 +27,7 @@ export const verifyToken = (token) => async (dispatch) => {
   try {
     const res = await axios({
       method: "GET",
-      url: `${apiEndpoint}/api/verify?token=${token}`,
+      url: `${apiEndpoint}/api/auth/verify?token=${token}`,
     });
     dispatch({ type: VERIFY_TOKEN, payload: res.data });
   } catch (err) {
