@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import { themeChange } from "theme-change";
 import store from "./redux/store";
 import Loader from "./components/common/Loader";
+import DistributorLayout from "./components/Distributors/DistributorLayout";
 
 const Login = lazy(() => import("./components/Login"));
 const Landing = lazy(() => import("./components/Landing"));
@@ -33,6 +34,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={Landing} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/layout" component={DistributorLayout} />
           </Switch>
         </Suspense>
       </Router>

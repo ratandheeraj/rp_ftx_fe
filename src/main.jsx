@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import "./index.css";
+import "./styles/layout.css";
 // import "bulma/css/bulma.min.css";
 
 ReactDOM.render(
