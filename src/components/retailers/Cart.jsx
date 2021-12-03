@@ -27,7 +27,7 @@ function Cart({
     distributor_name,
     createRazorpayOrder
     }){
-
+        //change these
         const reqObject = {
             amount:"50000",
             distributor_id:"d2c0ea6f-183c-4973-b3db-0602d360d8c2",
