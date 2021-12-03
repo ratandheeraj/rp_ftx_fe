@@ -7,6 +7,8 @@ import { themeChange } from "theme-change";
 import store from "./redux/store";
 import Loader from "./components/common/Loader";
 import Navbar from "./components/common/Navbar";
+import RetailerHome from "./components/retailers/RetailerHome";
+import ProductPage from "./components/retailers/ProductPage";
 
 const Login = lazy(() => import("./components/Login"));
 const Landing = lazy(() => import("./components/Landing"));
@@ -28,13 +30,14 @@ function App() {
 
   return (
     <Provider store={store}>
-      <Navbar/>
       <Router>
         <ToastContainer />
         <Suspense fallback={<Loader />}>
           <Switch>
             <Route exact path="/" component={Landing} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/retailer-home" component={RetailerHome} />
+            <Route exact path="/product-page" component={ProductPage} />
           </Switch>
         </Suspense>
       </Router>
