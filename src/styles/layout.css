@@ -21,7 +21,6 @@
   flex-direction: column;
   border-right: 1px solid gray;
   /* background-color: #303a47; */
-  background-image: url("../assets/sidebar-bg.jpg");
 }
 
 .hidden {

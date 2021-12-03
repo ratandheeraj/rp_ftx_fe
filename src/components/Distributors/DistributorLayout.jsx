@@ -3,8 +3,9 @@ import { useResizeDetector } from "react-resize-detector";
 import { Redirect, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import DistributorNavbar from "../common/DistributorNavbar";
+import SidebarDist from "./SidebarDist";
 
-function DistributorLayout({ isAuthenticated, children }) {
+function DistributorLayout({ isAuthenticated, children, user }) {
   const [isSidebarActive, setIsActive] = useState(false);
   const [isMenuOpen, toggleMenu] = useState(false);
   const { width, ref } = useResizeDetector();
@@ -79,14 +80,22 @@ function DistributorLayout({ isAuthenticated, children }) {
     history.push("/profile");
   };
 
-  //   if (!isAuthenticated) {
-  //     return <Redirect to="/" />;
-  //   }
+  if (!isAuthenticated) {
+    return <Redirect to="/" />;
+  }
+
+  if (isAuthenticated) {
+    if (user) {
+      if (user.role !== "distributor") {
+        return <Redirect to="/login" />;
+      }
+    }
+  }
 
   return (
     <div className="layout" ref={ref}>
       <div className={`${sidebar} ${hideSidebar}`} ref={sidebarRef}>
-        <div>test</div>
+        <SidebarDist />
       </div>
       <div className={`${mainbar} ${showMainbar}`}>
         <DistributorNavbar
@@ -105,6 +114,7 @@ function DistributorLayout({ isAuthenticated, children }) {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.authReducer.isAuthenticated,
+  user: state.authReducer.user,
 });
 
 export default connect(mapStateToProps)(DistributorLayout);

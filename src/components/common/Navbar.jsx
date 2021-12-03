@@ -3,14 +3,14 @@ import React from "react";
 function Navbar() {
   return (
     <div>
-      <div class="navbar mb-2 shadow-lg bg-neutral text-neutral-content rounded-box">
-        <div class="flex-none">
-          <button class="btn btn-square btn-ghost">
+      <div className="navbar mb-2 shadow-lg bg-neutral text-neutral-content rounded-box">
+        <div className="flex-none">
+          <button className="btn btn-square btn-ghost">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              class="inline-block w-6 h-6 stroke-current"
+              className="inline-block w-6 h-6 stroke-current"
             >
               <path
                 stroke-linecap="round"
@@ -21,16 +21,16 @@ function Navbar() {
             </svg>
           </button>
         </div>
-        <div class="flex-1 px-2 mx-2">
-          <span class="text-lg font-bold">With two icons</span>
+        <div className="flex-1 px-2 mx-2">
+          <span className="text-lg font-bold">With two icons</span>
         </div>
-        <div class="flex-none">
-          <button class="btn btn-square btn-ghost">
+        <div className="flex-none">
+          <button className="btn btn-square btn-ghost">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              class="inline-block w-6 h-6 stroke-current"
+              className="inline-block w-6 h-6 stroke-current"
             >
               <path
                 stroke-linecap="round"
