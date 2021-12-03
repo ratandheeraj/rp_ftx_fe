@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import { themeChange } from "theme-change";
 import store from "./redux/store";
 import Loader from "./components/common/Loader";
+import Navbar from "./components/common/Navbar";
 
 const Login = lazy(() => import("./components/Login"));
 const Landing = lazy(() => import("./components/Landing"));
@@ -27,6 +28,7 @@ function App() {
 
   return (
     <Provider store={store}>
+      <Navbar/>
       <Router>
         <ToastContainer />
         <Suspense fallback={<Loader />}>
