@@ -15,7 +15,7 @@ function CartItem({
 }) {
   // console.log(quantity);
   return (
-    <div className="card lg:card-side bordered shadow-md py-1">
+    <div className="card lg:card-side bordered shadow-md py-1 mx-4">
       <figure className="self-center">
         <Meds size={96} />
       </figure>

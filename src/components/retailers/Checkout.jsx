@@ -2,7 +2,12 @@ import React, { useEffect } from "react";
 import CartItem from "./CartItem";
 import styles from "../../styles/cartItem.module.css";
 import { connect } from "react-redux";
-import { createRazorpayOrder } from "../../redux/actions/razorpayAction";
+import {
+  createRazorpayOrder,
+  updateOrderDetails,
+} from "../../redux/actions/razorpayAction";
+import { clearCart } from "../../redux/actions/cartAction";
+import { toast } from "react-toastify";
 
 function loadRazorpay(src) {
   return new Promise((resolve) => {
@@ -26,9 +31,12 @@ function Checkout({
   retailer_email,
   distributor_name,
   createRazorpayOrder,
+  updateOrderDetails,
   cart,
+  clearCart,
   retailer_id,
   retailer_phone,
+  order_details,
 }) {
   //change these
 
@@ -36,6 +44,7 @@ function Checkout({
     return prev + curr.amount;
   }, 0);
 
+  // make this dynamic
   const reqObject = {
     amount: totalAmt * 100,
     distributor_id: "3efc1eb8-af72-4740-b27b-7cc35e4bbe24",
@@ -46,7 +55,9 @@ function Checkout({
     createRazorpayOrder(reqObject);
   }, []);
 
-  console.log(order_id);
+  // console.log(order_id);
+
+  console.log(order_details);
 
   async function displayRazorpay() {
     const res = await loadRazorpay(
@@ -64,15 +75,26 @@ function Checkout({
       description: "Test Transaction",
       image: "https://example.com/your_logo",
       order_id: order_id,
-      handler: function (err, response) {
-        if (err) {
-          alert(err);
-          return console.log("payment failed");
-        }
+      handler: function (response) {
         console.log(response);
-        alert(response.razorpay_payment_id);
-        alert(response.razorpay_order_id);
-        alert(response.razorpay_signature);
+        updateOrderDetails({
+          order_id: order_details.order.order_id,
+          transaction_id: response.razorpay_order_id,
+        });
+        toast.success("Payment success", {
+          position: "top-right",
+          autoClose: 5000,
+          theme: "colored",
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+        });
+        setTimeout(() => {
+          clearCart();
+        }, 400);
+        // alert(response.razorpay_payment_id);
+        // alert(response.razorpay_order_id);
+        // alert(response.razorpay_signature);
       },
       prefill: {
         name: retailer_name,
@@ -96,8 +118,25 @@ function Checkout({
       alert(response.error.reason);
       alert(response.error.metadata.order_id);
       alert(response.error.metadata.payment_id);
+      toast.error("payment failed!", {
+        position: "top-right",
+        autoClose: 5000,
+        theme: "colored",
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+      });
     });
   }
+
+  if (cart.length < 1) {
+    return (
+      <div>
+        <p>Sorry No products in the cart</p>
+      </div>
+    );
+  }
+
   return (
     <div>
       <h1 className="text-center text-4xl pt-4">Order Summary</h1>
@@ -135,6 +174,7 @@ function Checkout({
       </div>
       <div className={styles["buttonCenter"]}>
         <button
+          disabled={cart.length < 1}
           className="btn btn-wide btn-md justify-self-center"
           onClick={displayRazorpay}
         >
@@ -155,6 +195,11 @@ const mapStateToProps = (state) => ({
   distributor_name: state.razorpayReducer.distributor_name,
   cart: state.cartReducer.cart,
   retailer_id: state.authReducer.user.retailer_id,
+  order_details: state.razorpayReducer.order_details,
 });
 
-export default connect(mapStateToProps, { createRazorpayOrder })(Checkout);
+export default connect(mapStateToProps, {
+  createRazorpayOrder,
+  updateOrderDetails,
+  clearCart,
+})(Checkout);

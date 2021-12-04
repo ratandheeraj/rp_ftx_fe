@@ -1,5 +1,5 @@
 import { ADD_TO_CART, REMOVE_FROM_CART } from "./types/actionTypes";
-
+import { toast } from "react-toastify";
 // export const addToCart = (product_id) => (dispatch, getState) => {
 //   const state = getState();
 //   const _cart = state.productReducer.productsByDistributor;
@@ -29,8 +29,23 @@ import { ADD_TO_CART, REMOVE_FROM_CART } from "./types/actionTypes";
 
 export const addToCart = (_cart) => (dispatch) => {
   dispatch({ type: ADD_TO_CART, payload: _cart });
+  toast.info("added to cart", {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+  });
 };
 
 export const clearCart = () => (dispatch) => {
+  console.log("inside clear cart action");
   dispatch({ type: "CLEAR_CART" });
+  toast.info("cleared cart", {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+  });
 };

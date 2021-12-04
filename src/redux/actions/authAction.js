@@ -9,6 +9,7 @@ import {
 } from "./types/actionTypes";
 import axios from "axios";
 import { apiEndpoint } from "../../utils/apiEndpoint";
+import { toast } from "react-toastify";
 
 export const login =
   ({ email, password, type }) =>
@@ -25,9 +26,23 @@ export const login =
       });
 
       dispatch({ type: LOGIN_SUCCESS, payload: res.data });
+      toast.success("welcome", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+      });
     } catch (err) {
       console.log(err);
       dispatch({ type: LOGIN_FAIL });
+      toast.error("login failed", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+      });
     }
   };
 
