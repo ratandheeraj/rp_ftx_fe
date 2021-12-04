@@ -57,9 +57,9 @@ function Landing({ isAuthenticated }) {
                 className="absolute left-0 flex-col items-center justify-center w-full pb-8 mt-48 border-b border-gray-200 md:relative md:w-auto md:bg-transparent md:border-none md:mt-0 md:flex-row md:p-0 md:items-end md:flex md:justify-between">
                 <Link to="/login"
                     className="relative z-40 px-3 py-2 mr-0 text-sm font-bold text-pink-500 md:px-5 lg:text-white sm:mr-3 md:mt-0">Login</Link>
-                <a href="#_"
+                <Link to="/register"
                     className="relative z-40 inline-block w-auto h-full px-5 py-3 text-sm font-bold leading-none text-white transition-all transition duration-100 duration-300 bg-indigo-700 rounded shadow-md fold-bold lg:bg-white lg:text-indigo-700 sm:w-full lg:shadow-none hover:shadow-xl">Get
-                    Started</a>
+                    Started</Link>
                 <svg className="absolute top-0 left-0 w-screen max-w-3xl -mt-64 -ml-12 lg:block"
                     viewBox="0 0 818 815" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
                     <defs>
@@ -121,8 +121,8 @@ function Landing({ isAuthenticated }) {
                 className="z-30 flex flex-col items-center w-full max-w-xl pt-48 text-center lg:items-start lg:w-1/2 lg:pt-20 xl:pt-40 lg:text-left">
                 <h1 className="relative mb-4 text-3xl font-black leading-tight text-gray-900 sm:text-6xl xl:mb-8">We connect Retailers and Distributors</h1>
                 <p className="pr-0 mb-8 text-base text-gray-600 sm:text-lg xl:text-xl lg:pr-20">Distributor Purchases and payments made online.</p>
-                <a href="#_"
-                    className="relative self-start inline-block w-auto px-8 py-4 mx-auto mt-0 text-base font-bold text-white bg-indigo-600 border-t border-gray-200 rounded-md shadow-xl sm:mt-1 fold-bold lg:mx-0">Get Started</a>
+                <Link to="/register"
+                    className="relative self-start inline-block w-auto px-8 py-4 mx-auto mt-0 text-base font-bold text-white bg-indigo-600 border-t border-gray-200 rounded-md shadow-xl sm:mt-1 fold-bold lg:mx-0">Get Started</Link>
                 {/* <!-- Integrates with section --> */}
                 <div className="flex-col hidden mt-12 sm:flex lg:mt-24">
                     <p className="mb-4 text-sm font-medium tracking-widest text-gray-500 uppercase">Integrates With</p>

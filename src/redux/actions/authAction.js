@@ -6,6 +6,8 @@ import {
   LOGOUT,
   USER_LOADED,
   AUTH_ERROR,
+  REGISTRATION_SUCCESS,
+  REGISTRATION_FAIL,
 } from "./types/actionTypes";
 import axios from "axios";
 import { apiEndpoint } from "../../utils/apiEndpoint";
@@ -79,6 +81,60 @@ export const loadUser =
     } catch (err) {
       dispatch({
         type: AUTH_ERROR,
+      });
+    }
+  };
+
+export const register =
+  ({ name, email, password, phone_number, pincode, address, location }) =>
+  async (dispatch) => {
+    try {
+      location = {
+        type: "Feature",
+        geometry: {
+          type: "Point",
+          coordinates: [125.6, 10.1],
+        },
+        properties: {
+          name: "Dinagat Islands",
+        },
+      };
+      const body = JSON.stringify({
+        name,
+        email,
+        password,
+        phone_number,
+        address,
+        location,
+        pincode,
+      });
+      console.log(body);
+      const res = await axios({
+        url: `${apiEndpoint}/api/retailers`,
+        method: "POST",
+        data: body,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      dispatch({ type: REGISTRATION_SUCCESS, payload: res.data });
+      toast.success("Login To Continue", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+      });
+    } catch (err) {
+      console.log(err);
+      dispatch({ type: REGISTRATION_FAIL });
+      toast.error("Registrarion failed", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
       });
     }
   };
