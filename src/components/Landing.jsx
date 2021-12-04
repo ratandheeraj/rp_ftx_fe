@@ -45,7 +45,7 @@ function Landing({ isAuthenticated }) {
                 </g>
               </svg>
               <span className="ml-3 text-xl text-gray-800">
-                AppName<span className="text-pink-500">.</span>
+                DistCart<span className="text-pink-500">.</span>
               </span>
             </a>
 

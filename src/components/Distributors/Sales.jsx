@@ -1,6 +1,15 @@
 import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { getTotalSale } from "../../redux/actions/saleAction";
+import LineGraph from "../common/LineGraph";
 
-function Sales() {
+function Sales({ getTotalSale, totalSale }) {
+  useEffect(() => {
+    getTotalSale();
+  }, []);
+
+  console.log(totalSale);
+
   return (
     <div>
       <div className="flex">
@@ -35,35 +44,34 @@ function Sales() {
               </tr>
             </thead>
             <tbody>
-              <tr className="hover">
-                <th>5</th>
-                <td>Yancy Tear</td>
-                <td>Community Outreach Specialist</td>
-                <td>Indigo</td>
-              </tr>
-              <tr className="hover">
-                <th>6</th>
-                <td>Irma Vasilik</td>
-                <td>Editor</td>
-                <td>Purple</td>
-              </tr>
-              <tr className="hover">
-                <th>7</th>
-                <td>Meghann Durtnal</td>
-                <td>Staff Accountant IV</td>
-                <td>Yellow</td>
-              </tr>
-              <tr className="hover">
-                <th>8</th>
-                <td>Sammy Seston</td>
-                <td>Accountant I</td>
-                <td>Crimson</td>
-              </tr>
+              {totalSale.map((e, index) => {
+                return (
+                  <tr key={e.order_id} className="hover">
+                    <th>{index + 1}</th>
+                    <td>{e.retailer_name}</td>
+                    <td>{e.retailer_id}</td>
+                    <td>{e.order_amount}</td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
       </div>
+      <div className="shadow-md rounded-md px-3">
+        <LineGraph
+          data={totalSale}
+          labelX="order_id"
+          entity="order_amount"
+          unit="rupees"
+        />
+      </div>
     </div>
   );
 }
-export default Sales;
+
+const mapStateToProps = (state) => ({
+  totalSale: state.saleReducer.totalSale,
+});
+
+export default connect(mapStateToProps, { getTotalSale })(Sales);
