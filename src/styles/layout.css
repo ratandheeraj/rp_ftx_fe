@@ -211,3 +211,7 @@
     width: 100%;
   }
 }
+
+.vis-card-height {
+  height: 85vh;
+}

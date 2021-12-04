@@ -1,6 +1,7 @@
 import axios from "axios";
 import { apiEndpoint } from "../../utils/apiEndpoint";
 import {
+  GET_ALL_RETAILERS,
   GET_SALE_BETWEEN_DATES,
   GET_SALE_BETWEEN_DATES_ERROR,
   GET_SALE_BY_RETAILER,
@@ -43,3 +44,13 @@ export const getSaleBetweenDates =
       dispatch({ type: GET_SALE_BETWEEN_DATES_ERROR });
     }
   };
+
+export const getAllRetailers = () => async (dispatch) => {
+  try {
+    const res = await axios.get(`${apiEndpoint}/api/retailers`);
+    dispatch({ type: GET_ALL_RETAILERS, payload: res.data });
+  } catch (err) {
+    console.log(err);
+    dispatch({ type: GET_SALE_BETWEEN_DATES_ERROR });
+  }
+};

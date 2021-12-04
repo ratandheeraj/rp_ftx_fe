@@ -4,7 +4,8 @@ import App from "./App";
 import "./index.css";
 import "./styles/layout.css";
 import "react-toastify/dist/ReactToastify.css";
-import "maplibre-gl/dist/maplibre-gl.css";
+import "mapbox-gl/dist/mapbox-gl.css";
+// import "maplibre-gl/dist/maplibre-gl.css";
 // import "bulma/css/bulma.min.css";
 
 ReactDOM.render(
