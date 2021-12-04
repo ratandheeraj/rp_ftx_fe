@@ -24,9 +24,16 @@ export function productReducer(state = initalState, action) {
         product: payload,
       };
     case FETCH_PRODUCTS_BY_DISTRIBUTOR_ID:
+      const _products = payload.map((e) => {
+        return {
+          ...e,
+          amount: 0,
+          quantity: 0,
+        };
+      });
       return {
         ...state,
-        productsByDistributor: payload,
+        productsByDistributor: _products,
       };
     case FETCH_ALL_PRODUCTS:
       return {

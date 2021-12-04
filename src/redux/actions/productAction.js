@@ -37,7 +37,7 @@ export const fetchProductsByDistributorId = (id) => async (dispatch) => {
       `${apiEndpoint}/api/productsByDistributor/${id}`
     );
 
-    console.log(res.data);
+    // console.log(res.data);
     dispatch({ type: FETCH_PRODUCTS_BY_DISTRIBUTOR_ID, payload: res.data });
   } catch (err) {
     console.log(err);

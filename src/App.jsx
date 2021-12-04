@@ -61,6 +61,7 @@ function App() {
                   path="/retailer/product-page"
                   component={ProductPage}
                 />
+                <Route exact path="/retailer/cart" component={Cart} />
                 <Route path="/retailer/products">
                   <DistProducts />
                 </Route>

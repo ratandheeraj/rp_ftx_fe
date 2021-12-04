@@ -34,6 +34,14 @@ function SidebarRetailer() {
             </div>
           </NavLink>
         </li>
+        <li>
+          <NavLink to="/retailer/cart">
+            <div className="flex items-center ">
+              <Sales size={18} cursor="sales" />
+              <p className="mx-2">Cart</p>
+            </div>
+          </NavLink>
+        </li>
       </ul>
     </div>
   );
