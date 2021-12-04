@@ -1,1 +1,3 @@
-export const apiEndpoint = "http://localhost:3017";
+export const apiEndpoint = true
+  ? "https://polite-warthog-7.loca.lt"
+  : "http://localhost:3017";
