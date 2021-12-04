@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import "./index.css";
 import "./styles/layout.css";
+import "react-toastify/dist/ReactToastify.css";
+import "maplibre-gl/dist/maplibre-gl.css";
 // import "bulma/css/bulma.min.css";
 
 ReactDOM.render(

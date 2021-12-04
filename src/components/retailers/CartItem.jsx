@@ -16,28 +16,27 @@ function CartItem({
   // console.log(quantity);
   return (
     <div className="card lg:card-side bordered shadow-md py-1">
-      
       <figure className="self-center pl-2">
         <Meds size={96} />
       </figure>
       <div className="card-body pt-0 pb-3 pr-2">
-      <div className="self-end">
-            <button className="btn btn-square btn-ghost">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                className="inline-block w-6 h-6 stroke-current text-error"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
-                ></path>
-              </svg>
-            </button>
-      </div>
+        <div className="self-end">
+          <button className="btn btn-square btn-ghost">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              className="inline-block w-6 h-6 stroke-current text-error"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
+            </svg>
+          </button>
+        </div>
         <h2 className="card-title">Product Name: {product_name}</h2>
         <div>
           Price:
@@ -64,9 +63,6 @@ function CartItem({
             +
           </button>
         </div>
-        {/* <div> */}
-          
-        {/* </div> */}
       </div>
     </div>
   );

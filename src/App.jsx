@@ -27,9 +27,7 @@ function App() {
   useEffect(() => {
     if (localStorage.token) {
       const token = localStorage.getItem("token");
-      console.log(token);
       store.dispatch(verifyToken(token));
-      console.log("ran in app.js");
     }
     window.addEventListener("storage", () => {
       if (!localStorage.token) store.dispatch(logout());
@@ -60,11 +58,7 @@ function App() {
                   component={RetailerHome}
                 />
                 <Route path="/retailer/checkout" component={Checkout} />
-                <Route
-                  exact
-                  path="/retailer/product-page"
-                  component={ProductPage}
-                />
+
                 <Route exact path="/retailer/cart" component={Cart} />
                 <Route path="/retailer/products">
                   <DistProducts />
