@@ -4,6 +4,8 @@ import {
   LOGOUT,
   VERIFY_TOKEN,
   VERIFY_TOKEN_ERROR,
+  REGISTRATION_SUCCESS,
+  REGISTRATION_FAIL,
 } from "../actions/types/actionTypes";
 
 const initialState = {
@@ -46,10 +48,16 @@ export function authReducer(state = initialState, action) {
         isDistributor: payload.isDistributor,
         user: payload.user,
       };
+    case REGISTRATION_SUCCESS:
+      return {
+        ...state,
+        user: payload.user,
+      };
 
     case VERIFY_TOKEN_ERROR:
     case LOGIN_FAIL:
     case LOGOUT:
+    case REGISTRATION_FAIL:
       localStorage.removeItem("token");
       return {
         ...state,

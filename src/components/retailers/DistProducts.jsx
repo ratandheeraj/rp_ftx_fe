@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { addToCart } from "../../redux/actions/cartAction";
 import ProductItem from "./ProductItem";
 import styles from "../../styles/cartItem.module.css";
+import {useHistory} from "react-router-dom";
 
 function DistProducts({ productsByDist: products, addToCart }) {
   //   console.log(products);
@@ -40,10 +41,11 @@ function DistProducts({ productsByDist: products, addToCart }) {
     // console.log(newCart);
     setCart(newCart);
   };
-
+  let history = useHistory();
   const handleAddItems = () => {
     const _cart = cart.filter((e) => e.amount > 0);
     addToCart(_cart);
+    history.replace('/retailer/cart');
   };
 
   return (

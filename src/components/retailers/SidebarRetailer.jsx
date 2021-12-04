@@ -10,30 +10,30 @@ function SidebarRetailer() {
         <li className="menu-title">
           <span>Menu</span>
         </li>
-        <li>
+        {/* <li>
           <NavLink to="/retailer/dashoard">
             <div className="flex items-center">
               <Dashboard size={18} cursor="dashboard" />
               <p className="mx-2">Dashboard</p>
             </div>
           </NavLink>
-        </li>
+        </li> */}
         <li>
           <NavLink to="/retailer/retailer-home">
             <div className="flex items-center ">
               <Products size={18} cursor="product" />
-              <p className="mx-2">Products</p>
+              <p className="mx-2">Retailers</p>
             </div>
           </NavLink>
         </li>
-        <li>
+        {/* <li>
           <NavLink to="/retailer/product-page">
             <div className="flex items-center ">
               <Sales size={18} cursor="sales" />
               <p className="mx-2">Sales</p>
             </div>
           </NavLink>
-        </li>
+        </li> */}
         <li>
           <NavLink to="/retailer/cart">
             <div className="flex items-center ">
