@@ -1,7 +1,7 @@
 .closeButton {
   position: relative;
-  left: 510px;
-  bottom: 140px;
+  right: 1510px;
+  top: 1400px;
 }
 .buttonCenter {
   display: flex;

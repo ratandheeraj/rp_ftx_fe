@@ -44,32 +44,45 @@ function Cart({
 
   return (
     <div>
-      <div className="w-2/12">
-        <p> Total : {cart.length} items</p>
-        <p> Amount: {totalAmt}</p>
-      </div>
+      <div className="w-2/12"></div>
 
       <div className="w-8/12 mt-5">
-        <div className={styles["buttonCenter"]}>
-          <Link
-            to="/retailer/checkout"
-
-            // onClick={displayRazorpay}
-          >
-            <button
-              onClick={handlePlaceOrder}
-              className="btn btn-primary btn-md justify-self-center"
-            >
-              Place order
-            </button>
-          </Link>
-          <button
-            onClick={() => clearCart()}
-            className="btn btn-secondary btn-md ml-5"
-          >
-            clear cart
-          </button>
-        </div>
+        {cart.length === 0 ? (
+          <div>
+            <p className="text-center pb-2 text-xl">
+              Your cart is empty, add items to continue.
+            </p>
+          </div>
+        ) : (
+          <div>
+            <p className="text-center"> Total items: {cart.length}</p>
+            <p className="text-center text-xl pb-2"> Amount(₹) : {totalAmt}</p>
+            <div className={styles["buttonCenter"]}>
+              <div>
+                <Link
+                  to="/retailer/checkout"
+                  className="btn btn-wide btn-lg btn-accent justify-self-center"
+                  // onClick={displayRazorpay}
+                >
+                  <button
+                    onClick={handlePlaceOrder}
+                    className="btn btn-primary btn-md justify-self-center"
+                  >
+                    Place order
+                  </button>
+                </Link>
+                <div>
+                  <button
+                    onClick={() => clearCart()}
+                    className="btn btn-wide  mt-2"
+                  >
+                    clear cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
       <div className="flex flex-wrap w-full">
         {cart.map((e) => (
