@@ -82,7 +82,7 @@ function DistributorDash({
     return (
       <div className="bg-black opacity-50 w-auto inline-block h-auto p-2">
         <div className="text-white text-sm m-1">Name: {name || ""}</div>
-        <div className="text-white text-sm m-1">status {id || ""}</div>
+        <div className="text-white text-sm m-1">id {id || ""}</div>
         <div className="text-white text-sm m-1">lat {x || ""}</div>
         <div className="text-white text-sm m-1">long {y || ""}</div>
       </div>
