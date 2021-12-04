@@ -3,17 +3,17 @@ import React from "react";
 import styles from "../../styles/cartItem.module.css";
 import { GiMedicines as Meds } from "react-icons/gi";
 import { connect } from "react-redux";
-import { addToCart, removeFromCart } from "../../redux/actions/cartAction";
+// import { addToCart, removeFromCart } from "../../redux/actions/cartAction";
 
 function CartItem({
   product_id,
   product_name,
   product_price,
   quantity,
-  addToCart,
-  removeFromCart,
+  handleIncrement,
+  handleDecrement,
 }) {
-  console.log(quantity);
+  // console.log(quantity);
   return (
     <div className="card lg:card-side bordered shadow-md py-1">
       <figure className="self-center">
@@ -35,13 +35,13 @@ function CartItem({
           <button
             disabled={quantity < 1}
             className="btn mx-1 btn-primary btn-sm"
-            onClick={() => removeFromCart(product_id)}
+            onClick={() => handleDecrement(product_id)}
           >
             -
           </button>
           <button
             className="btn mx-1 btn-primary btn-sm"
-            onClick={() => addToCart(product_id)}
+            onClick={() => handleIncrement(product_id)}
           >
             +
           </button>
@@ -74,6 +74,4 @@ const mapStateToProps = (state) => ({
   products: state.productReducer.productsByDitributor,
 });
 
-export default connect(mapStateToProps, { addToCart, removeFromCart })(
-  CartItem
-);
+export default connect(mapStateToProps, {})(CartItem);

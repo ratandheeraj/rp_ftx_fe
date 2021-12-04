@@ -49,7 +49,7 @@ function App() {
             <Route exact path="/" component={Landing} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/cart" component={Cart} />
-            <Route exact path="/checkout" component={Checkout} />
+            {/* <Route exact path="/checkout" component={Checkout} /> */}
           </Switch>
           <Switch>
             <Route path="/retailer">
@@ -59,6 +59,7 @@ function App() {
                   path="/retailer/retailer-home"
                   component={RetailerHome}
                 />
+                <Route path="/retailer/checkout" component={Checkout} />
                 <Route
                   exact
                   path="/retailer/product-page"

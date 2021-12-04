@@ -10,12 +10,14 @@ export function cartReducer(state = initialState, action) {
   switch (type) {
     case ADD_TO_CART:
       return {
-        cart: [...state.cart, payload],
+        ...state,
+        cart: payload,
       };
-
-    case REMOVE_FROM_CART:
-      return { ...state, cart: payload };
-
+    case "CLEAR_CART":
+      return {
+        ...state,
+        cart: [],
+      };
     default:
       return state;
   }

@@ -3,8 +3,10 @@ import CartItem from "./CartItem";
 import styles from "../../styles/cartItem.module.css";
 import { connect } from "react-redux";
 import _ from "lodash";
+import { Link } from "react-router-dom";
+import { clearCart } from "../../redux/actions/cartAction";
 
-function Cart({ cart }) {
+function Cart({ cart, clearCart }) {
   const totalAmt = cart.reduce((prev, curr, currIdx, Arr) => {
     return prev + curr.amount;
   }, 0);
@@ -106,16 +108,27 @@ function Cart({ cart }) {
             product_name={e.product_name}
             product_price={e.product_price}
             quantity={e.quantity}
+            handleDecrement={handleDecrement}
+            handleIncrement={handleIncrement}
           />
         ))}
       </div>
       <div className="w-8/12 mt-5">
         <div className={styles["buttonCenter"]}>
-          <button
+          <Link
+            to="/retailer/checkout"
             className="btn btn-wide btn-lg justify-self-center"
             // onClick={displayRazorpay}
           >
             Checkout
+          </Link>
+        </div>
+        <div>
+          <button
+            onClick={() => clearCart()}
+            className="btn btn-secondary ml-5"
+          >
+            clear cart
           </button>
         </div>
       </div>
@@ -127,4 +140,4 @@ const mapStateToProps = (state) => ({
   cart: state.cartReducer.cart,
 });
 
-export default connect(mapStateToProps, {})(Cart);
+export default connect(mapStateToProps, { clearCart })(Cart);

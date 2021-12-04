@@ -7,6 +7,7 @@ const initialState = {
   retailer_name: null,
   retailer_email: null,
   distributor_name: null,
+  retailer_phone: null,
 };
 
 export function razorpayReducer(state = initialState, action) {
@@ -22,6 +23,7 @@ export function razorpayReducer(state = initialState, action) {
         retailer_name: payload.retailer_name,
         retailer_email: payload.retailer_email,
         distributor_name: payload.distributor_name,
+        retailer_phone: payload.retailer_phone,
       };
 
     case FETCH_ORDER_ERROR:
@@ -33,6 +35,7 @@ export function razorpayReducer(state = initialState, action) {
         retailer_name: null,
         retailer_email: null,
         distributor_name: null,
+        retailer_phone: null,
       };
     default:
       return state;
