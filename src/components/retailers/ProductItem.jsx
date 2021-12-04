@@ -5,7 +5,7 @@ import { GiMedicines as Meds } from "react-icons/gi";
 import { connect } from "react-redux";
 // import { addToCart, removeFromCart } from "../../redux/actions/cartAction";
 
-function CartItem({
+function ProductItem({
   product_id,
   product_name,
   product_price,
@@ -15,9 +15,9 @@ function CartItem({
 }) {
   // console.log(quantity);
   return (
-    <div className="card lg:card-side bordered shadow-md py-1">
+    <div className="card lg:card-side bordered shadow-md py-1 w-6/12 mr-2">
       
-      <figure className="self-center pl-2">
+      <figure className="self-center mt-10 pt-10 pl-2">
         <Meds size={96} />
       </figure>
       <div className="card-body pt-0 pb-3 pr-2">
@@ -76,4 +76,4 @@ const mapStateToProps = (state) => ({
   products: state.productReducer.productsByDitributor,
 });
 
-export default connect(mapStateToProps, {})(CartItem);
+export default connect(mapStateToProps, {})(ProductItem);

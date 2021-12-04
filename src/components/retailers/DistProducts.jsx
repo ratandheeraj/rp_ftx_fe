@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { addToCart } from "../../redux/actions/cartAction";
-import CartItem from "./CartItem";
+import ProductItem from "./ProductItem";
+import styles from "../../styles/cartItem.module.css";
 
 function DistProducts({ productsByDist: products, addToCart }) {
   //   console.log(products);
@@ -47,11 +48,14 @@ function DistProducts({ productsByDist: products, addToCart }) {
 
   return (
     <div>
-      <p>products</p>
-      <div>
+      <h1 className="text-center text-4xl">Products</h1>
+      
+        <div className="">
+
+        <div className="flex">
         {cart.map((p) => {
           return (
-            <CartItem
+            <ProductItem
               key={p.product_id}
               product_id={p.product_id}
               product_name={p.product_name}
@@ -62,9 +66,10 @@ function DistProducts({ productsByDist: products, addToCart }) {
             />
           );
         })}
+        </div>
       </div>
-      <div>
-        <button onClick={handleAddItems} className="btn btn-primary">
+      <div className={styles["buttonCenter"]}>
+        <button onClick={handleAddItems} className="btn btn-accent mt-2 mb-3">
           Add items to cart
         </button>
       </div>

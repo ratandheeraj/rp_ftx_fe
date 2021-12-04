@@ -98,8 +98,7 @@ function Cart({ cart, clearCart }) {
   return (
     <div className="flex">
       <div className="w-2/12">
-        <p> Total : {cart.length} items</p>
-        <p> Amount: {totalAmt}</p>
+       
       </div>
       <div>
         {cart.map((e) => (
@@ -114,23 +113,39 @@ function Cart({ cart, clearCart }) {
         ))}
       </div>
       <div className="w-8/12 mt-5">
+      {cart.length=== 0?
+          <div>
+            <p className="text-center pb-2 text-xl">Your cart is empty, add items to continue.</p>
+          </div>  :
+          <div>
+        <p className="text-center"> Total items: {cart.length}</p>
+        <p className="text-center text-xl pb-2"> Amount(₹) : {totalAmt}</p>
         <div className={styles["buttonCenter"]}>
+        <div>
+          
+       
+        
           <Link
             to="/retailer/checkout"
-            className="btn btn-wide btn-lg justify-self-center"
+            className="btn btn-wide btn-lg btn-accent justify-self-center"
             // onClick={displayRazorpay}
           >
             Checkout
           </Link>
-        </div>
-        <div>
+          <div>
           <button
             onClick={() => clearCart()}
-            className="btn btn-secondary ml-5"
+            className="btn btn-wide  mt-2"
           >
             clear cart
           </button>
         </div>
+          </div>
+        </div>
+          </div>
+        }
+        
+        
       </div>
     </div>
   );
