@@ -32,6 +32,14 @@ function Sales({ getTotalSale, totalSale }) {
           </div>
         </div>
       </div>
+      <div className="shadow-md rounded-md px-3 my-3">
+        <LineGraph
+          data={totalSale}
+          labelX="order_id"
+          entity="order_amount"
+          unit="rupees"
+        />
+      </div>
       <div className="flex justify-center pt-4 mt-5 bordered drop-shadow-md">
         <div className="overflow-x-auto">
           <table className="table w-full drop-shadow-md border-solid">
@@ -57,14 +65,6 @@ function Sales({ getTotalSale, totalSale }) {
             </tbody>
           </table>
         </div>
-      </div>
-      <div className="shadow-md rounded-md px-3">
-        <LineGraph
-          data={totalSale}
-          labelX="order_id"
-          entity="order_amount"
-          unit="rupees"
-        />
       </div>
     </div>
   );
