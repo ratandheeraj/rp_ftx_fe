@@ -23,6 +23,7 @@ const Checkout = lazy(() => import("./components/retailers/Checkout"));
 const DistributorDash = lazy(() =>
   import("./components/Distributors/DistributorDash")
 );
+const Registration = lazy(() => import("./components/Registration"));
 
 const Login = lazy(() => import("./components/Login"));
 const Landing = lazy(() => import("./components/Landing"));
