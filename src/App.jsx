@@ -6,19 +6,23 @@ import { Provider } from "react-redux";
 import { themeChange } from "theme-change";
 import store from "./redux/store";
 import Loader from "./components/common/Loader";
-import DistributorLayout from "./components/Distributors/DistributorLayout";
-import Navbar from "./components/common/Navbar";
-import RetailerHome from "./components/retailers/RetailerHome";
-import ProductPage from "./components/retailers/ProductPage";
-import Products from "./components/Products/Products";
-import RetailerLayout from "./components/retailers/RetailerLayout";
-import decoder from "jwt-decode";
-import ProductForm from "./components/Products/ProductForm";
-import ProductDetailView from "./components/retailers/ProductDetailView";
-import Cart from "./components/retailers/Cart";
-import Sales from "./components/Distributors/Sales";
-import DistProducts from "./components/retailers/DistProducts";
-import Checkout from "./components/retailers/Checkout";
+
+const DistributorLayout = lazy(() =>
+  import("./components/Distributors/DistributorLayout")
+);
+const RetailerHome = lazy(() => import("./components/retailers/RetailerHome"));
+const Products = lazy(() => import("./components/Products/Products"));
+const RetailerLayout = lazy(() =>
+  import("./components/retailers/RetailerLayout")
+);
+const ProductForm = lazy(() => import("./components/Products/ProductForm"));
+const Cart = lazy(() => import("./components/retailers/Cart"));
+const Sales = lazy(() => import("./components/Distributors/Sales"));
+const DistProducts = lazy(() => import("./components/retailers/DistProducts"));
+const Checkout = lazy(() => import("./components/retailers/Checkout"));
+const DistributorDash = lazy(() =>
+  import("./components/Distributors/DistributorDash")
+);
 
 const Login = lazy(() => import("./components/Login"));
 const Landing = lazy(() => import("./components/Landing"));
@@ -77,6 +81,9 @@ function App() {
                 </Route>
                 <Route path="/distributor/sales">
                   <Sales />
+                </Route>
+                <Route path="/distributor/dashboard">
+                  <DistributorDash />
                 </Route>
               </DistributorLayout>
             </Route>
