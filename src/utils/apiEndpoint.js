@@ -1,3 +1,3 @@
 export const apiEndpoint = true
-  ? "https://hot-rattlesnake-36.loca.lt"
+  ? "https://selfish-termite-10.loca.lt"
   : "http://localhost:3017";

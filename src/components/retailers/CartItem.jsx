@@ -1,9 +1,6 @@
 import React from "react";
-// import {AiOutlinePlus} from 'react-icons/fa';
-import styles from "../../styles/cartItem.module.css";
 import { GiMedicines as Meds } from "react-icons/gi";
 import { connect } from "react-redux";
-// import { addToCart, removeFromCart } from "../../redux/actions/cartAction";
 
 function CartItem({
   product_id,

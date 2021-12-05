@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import CartItem from "./CartItem";
 import styles from "../../styles/cartItem.module.css";
 import { connect } from "react-redux";
 import {

@@ -10,7 +10,7 @@ import {
   CartesianGrid,
   ResponsiveContainer,
 } from "recharts";
-import _ from "lodash";
+import isEmpty from "lodash/isEmpty";
 
 const LineGraph = ({ data, labelX, entity, unit, strokeColor }) => {
   // console.log(data);
@@ -35,7 +35,7 @@ const LineGraph = ({ data, labelX, entity, unit, strokeColor }) => {
         <Line
           type="monotone"
           dataKey={entity}
-          stroke={!_.isEmpty(strokeColor) ? strokeColor : "#82ca9d"}
+          stroke={!isEmpty(strokeColor) ? strokeColor : "#82ca9d"}
           strokeWidth={2}
           unit={unit}
         />

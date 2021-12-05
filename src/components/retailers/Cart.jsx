@@ -2,25 +2,24 @@ import React, { useEffect } from "react";
 import CartItem from "./CartItem";
 import styles from "../../styles/cartItem.module.css";
 import { connect } from "react-redux";
-import _ from "lodash";
 import { Link } from "react-router-dom";
 import { clearCart } from "../../redux/actions/cartAction";
 import { createOrder } from "../../redux/actions/razorpayAction";
 import { fetchAllDistributors } from "../../redux/actions/distributorAction";
 
-function Cart({ 
-  cart, 
+function Cart({
+  cart,
   clearCart,
   createOrder,
   distributors,
   user,
   fetchAllDistributors,
- }) {
+}) {
   const totalAmt = cart.reduce((prev, curr, currIdx, Arr) => {
     return prev + curr.amount;
   }, 0);
 
-    // console.log(user, distributors);
+  // console.log(user, distributors);
   console.log(totalAmt);
 
   const handleIncrement = () => {};
@@ -115,9 +114,7 @@ function Cart({
   // }
   return (
     <div className="flex">
-      <div className="w-2/12">
-       
-      </div>
+      <div className="w-2/12"></div>
       <div className="w-10/12">
         {cart.map((e) => (
           <CartItem
@@ -134,46 +131,43 @@ function Cart({
        
        </div> */}
       <div className="w-8/12 mt-5">
-      {cart.length === 0 ? (
+        {cart.length === 0 ? (
           <div>
             <p className="text-center pb-2 text-xl">
               Your cart is empty, add items to continue.
             </p>
-          </div>  
-          ) : (
+          </div>
+        ) : (
           <div>
-        <p className="text-center"> Total items: {cart.length}</p>
-        <p className="text-center text-xl pb-2"> Amount(₹) : {totalAmt}</p>
-        <div className={styles["buttonCenter"]}>
-        <div>
-          
-       
-        
-          <Link
-            to="/retailer/checkout"
-            className="btn btn-wide btn-lg btn-accent justify-self-center"
-            // onClick={displayRazorpay}
-          >
-            <button
+            <p className="text-center"> Total items: {cart.length}</p>
+            <p className="text-center text-xl pb-2"> Amount(₹) : {totalAmt}</p>
+            <div className={styles["buttonCenter"]}>
+              <div>
+                <Link
+                  to="/retailer/checkout"
+                  className="btn btn-wide btn-lg btn-accent justify-self-center"
+                  // onClick={displayRazorpay}
+                >
+                  <button
                     onClick={handlePlaceOrder}
                     className="btn btn-accent btn-md justify-self-center"
                   >
                     Place order
                   </button>
-          </Link>
-          <div>
-          <button
-            onClick={() => clearCart()}
-            className="btn btn-wide  mt-2"
-          >
-            clear cart
-          </button>
-        </div>
+                </Link>
+                <div>
+                  <button
+                    onClick={() => clearCart()}
+                    className="btn btn-wide  mt-2"
+                  >
+                    clear cart
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-          </div>
-          )}
-        </div>
+        )}
+      </div>
       {/* <div className="flex flex-wrap w-full">
        
       </div> */}
@@ -187,8 +181,8 @@ const mapStateToProps = (state) => ({
   user: state.authReducer.user,
 });
 
-export default connect(mapStateToProps, { 
+export default connect(mapStateToProps, {
   clearCart,
   createOrder,
-  fetchAllDistributors, 
+  fetchAllDistributors,
 })(Cart);

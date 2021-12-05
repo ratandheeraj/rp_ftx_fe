@@ -10,6 +10,7 @@ import {
 import Select from "react-select";
 import { StaticMap } from "react-map-gl";
 import DeckGL, { HexagonLayer } from "deck.gl";
+import config from "config";
 
 function DistributorDash({
   getSaleBetweenDates,
@@ -90,9 +91,7 @@ function DistributorDash({
   };
 
   const mapStyle = "mapbox://styles/yashone7/ck7niwrj318o41ip4jttx40km";
-  const apiToken =
-    "pk.eyJ1IjoieWFzaG9uZTciLCJhIjoiY2pweWY3azhsMDBtODQyb2RjN3JqemEwdyJ9.FkIQp7M4v4whzt5n_dVW-g";
-
+  const apiToken = config.get("apiToken");
   return (
     <div>
       <h1>

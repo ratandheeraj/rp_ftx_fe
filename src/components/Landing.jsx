@@ -335,7 +335,7 @@ function Landing({ isAuthenticated }) {
                         className="w-full h-auto mt-20 mb-20 ml-0 lg:mt-24 xl:mt-40 lg:mb-0 lg:h-full lg:-ml-12"/> */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  dataName="Layer 1"
+                  dataname="Layer 1"
                   width="861.34285"
                   height="648.67936"
                   viewBox="0 0 861.34285 648.67936"
@@ -606,7 +606,7 @@ function Landing({ isAuthenticated }) {
                   {/* <!-- FEATURE Icon 1 --> */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    dataName="Layer 1"
+                    dataname="Layer 1"
                     width="115"
                     viewBox="0 0 651.8127 551.31041"
                     xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -1077,7 +1077,7 @@ function Landing({ isAuthenticated }) {
                         </svg> */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    dataName="Layer 1"
+                    dataname="Layer 1"
                     width="95"
                     viewBox="0 0 821.16801 687.80201"
                     xmlnsXlink="http://www.w3.org/1999/xlink"
